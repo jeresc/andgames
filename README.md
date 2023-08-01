@@ -1,8 +1,44 @@
-# React + Vite
+# 🎮 Video Games App 🕹️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description 📝
 
-Currently, two official plugins are available:
+This is a Single Page Application (SPA) frontend created with React, Redux Toolkit, and Styled Components. The application fetches video game data from the rawg.io API and also features its own database to save new games. Additionally, it includes testing using a test suite and image storage is handled through Cloudinary.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo 🚀
+
+Check out the live demo of the application at [https://videogames-app-blond.vercel.app/](https://videogames-app-blond.vercel.app/)
+
+## Features 🌟
+
+- Browse a vast collection of video games from the rawg.io API.
+- Save your favorite games to the app's own database.
+- View detailed information about each game, including images, platforms, and release dates.
+- Easy-to-use and responsive user interface.
+
+## Technologies Used 🛠️
+
+- React ⚛️
+- Redux Toolkit 🔄
+- Styled Components 💅
+- rawg.io API 🎮
+- Cloudinary ☁️
+
+## Testing 🧪
+
+The application has been thoroughly tested using a test suite to ensure its functionality is robust and reliable.
+
+## License 📜
+
+This project is licensed under the [MIT License](LICENSE). Please see the LICENSE file for more details.
+
+## Contact 📞
+
+If you have any questions or need further information, you can contact the project maintainers at:
+
+- Name: Jeremias Soruco 🙋‍♂️
+- Email: jeremiastomassrc@gmail.com 📧
+
+---
+Thank you for visiting the Video Games App repository! If you have any questions or feedback, please don't hesitate to get in touch. Enjoy exploring the app! 🎉
+
+Made with ❤️ by [jeresc](https://github.com/jeresc)
