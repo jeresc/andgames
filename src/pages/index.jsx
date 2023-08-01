@@ -1,0 +1,6 @@
+export * from './NotFound/not-found'
+export * from './Landing/landing'
+export * from './Videogames/videogames'
+export * from './VideogameDetail/videogame-detail'
+export * from './VideogameForm/videogame-form'
+export * from './AboutMe/about-me'
