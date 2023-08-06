@@ -1,21 +1,14 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import {  createSlice } from '@reduxjs/toolkit'
+import { fetchVideogames, fetchGenres } from './actions'
 
 const initialState = {
   videogames: [],
+  genres: [],
   videogame: null,
+  sorting: null,
+  filtering: null,
+  loading: false
 }
-
-export const fetchVideogames = createAsyncThunk(
-  'videogames/fetch', async () => {
-    try {
-      const res = await fetch('http://localhost:3001/videogames')
-      const videogames = await res.json()
-      return videogames
-    } catch (error) {
-      return []
-    }
-  }
-)
 
 const videogamesSlice = createSlice({
   name: 'videogames',
@@ -26,14 +19,32 @@ const videogamesSlice = createSlice({
     },
     setVideogame: (state, action) => {
       state.videogame = action.payload
-    }
+    },
+    setSorting: (state, action) => {
+      state.sorting = action.payload
+    },
+    setFiltering: (state, action) => {
+      state.filtering = action.payload
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchVideogames.fulfilled, (state, action) => {
-      state.videogames = action.payload
+    builder.addCase(fetchVideogames.pending, (state) => {
+      state.loading = true
     })
-  }
+    builder.addCase(fetchVideogames.fulfilled, (state, action) => {
+      state.loading = false
+      state.videogames = action.payload
+    }),
+    builder.addCase(fetchGenres.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(fetchGenres.fulfilled, (state, action) => {
+      state.loading = false
+      state.genres = action.payload
+    })
+  },
 })
 
-export const { setVideogames, setVideogame } = videogamesSlice.actions
+export const { setVideogames, setVideogame, setSorting, setFiltering } =
+  videogamesSlice.actions
 export default videogamesSlice.reducer

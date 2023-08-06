@@ -1,7 +1,10 @@
-
-import { configureStore } from "@reduxjs/toolkit";
-import videogamesReducer from "./videogamesSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import videogamesReducer from './videogamesSlice'
+import formReducer from './formSlice'
 
 export const store = configureStore({
-  reducer: videogamesReducer
+  reducer: {
+    videogames: videogamesReducer,
+    form: formReducer
+  },
 })

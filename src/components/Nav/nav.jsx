@@ -1,7 +1,18 @@
+import { logo } from '@/assets'
+import { NavContainer, NavLogo, NavButton } from "./nav.styles"
+import {SearchBar} from "@/components"
+import { useNavigate } from 'react-router-dom'
+
 export const Nav = () => {
+
+  const navigate = useNavigate()
+
   return (
-    <div>
-      <h1>Nav</h1>
-    </div>
+    <NavContainer >
+      <NavLogo src={logo} alt="logo" />
+      <SearchBar />
+      <NavButton />
+      <NavButton onClick={() => {navigate('videogames/new')}}>New</NavButton>
+    </NavContainer>
   )
 }

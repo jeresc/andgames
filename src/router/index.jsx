@@ -4,7 +4,7 @@ import { Main } from '@/layouts'
 import {
   NotFound,
   Landing,
-  Videogames,
+  Home,
   VideogameDetail,
   VideogameForm,
   AboutMe
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Videogames />,
+            element: <Home />,
           },
           {
             path: 'new',

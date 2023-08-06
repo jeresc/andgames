@@ -1,17 +1,18 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { Nav } from "@/components";
+import { Outlet, useLocation } from 'react-router-dom'
+import { Nav } from '@/components'
+import { MainContainer } from './main.styles'
 
 export const Main = () => {
-  const location = useLocation();
+  const location = useLocation()
 
-  const shouldShowNav = location.pathname !== "/";
+  const shouldShowNav = location.pathname !== '/'
 
   return (
     <>
-      <main>
+      <MainContainer>
         {shouldShowNav && <Nav />}
         <Outlet />
-      </main>
+      </MainContainer>
     </>
   )
 }
