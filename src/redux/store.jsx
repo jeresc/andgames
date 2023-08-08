@@ -5,6 +5,6 @@ import formReducer from './formSlice'
 export const store = configureStore({
   reducer: {
     videogames: videogamesReducer,
-    form: formReducer
+    form: formReducer,
   },
 })

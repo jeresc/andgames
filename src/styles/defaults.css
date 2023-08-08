@@ -1,9 +1,8 @@
 :root {
   background-size: cover;
   background-position: center;
-  color: var(--mill-2);
-  font-size: clamp(10px, .666vw, 20px);
-  font-family: var(--font-2), sans-serif;
+  font-size: 62.5%;
+  font-family: var(--font);
   color: var(--mill-white);
   font-weight: 400;
 }
@@ -16,7 +15,6 @@
   width: 100vw;
   height: 100vh;
   z-index: -100;
-  filter: var(--background-filters);
   background: var(--background-image);
   background-size: cover;
 }
@@ -27,9 +25,6 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: inherit;
-  /* backface-visibility: hidden; */
-  /* z-index: 3; */
-  /* transform: translate3d(0, 0, 0); */
 }
 
 h1 {font-size: 4.0rem;}

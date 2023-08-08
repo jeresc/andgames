@@ -1,13 +1,13 @@
-import {  createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import { fetchVideogames, fetchGenres } from './actions'
 
 const initialState = {
   videogames: [],
   genres: [],
   videogame: null,
-  sorting: null,
-  filtering: null,
-  loading: false
+  order: 'name_asc',
+  filter: 'none',
+  loading: false,
 }
 
 const videogamesSlice = createSlice({
@@ -17,14 +17,17 @@ const videogamesSlice = createSlice({
     setVideogames: (state, action) => {
       state.videogames = action.payload
     },
+    addVideogame: (state, action) => {
+      state.videogames = [...state.videogames, action.payload]
+    },
     setVideogame: (state, action) => {
       state.videogame = action.payload
     },
-    setSorting: (state, action) => {
-      state.sorting = action.payload
+    orderVideogames: (state, action) => {
+      state.order = action.payload
     },
-    setFiltering: (state, action) => {
-      state.filtering = action.payload
+    filterVideogames: (state, action) => {
+      state.filter = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -34,7 +37,7 @@ const videogamesSlice = createSlice({
     builder.addCase(fetchVideogames.fulfilled, (state, action) => {
       state.loading = false
       state.videogames = action.payload
-    }),
+    })
     builder.addCase(fetchGenres.pending, (state) => {
       state.loading = true
     })
@@ -45,6 +48,10 @@ const videogamesSlice = createSlice({
   },
 })
 
-export const { setVideogames, setVideogame, setSorting, setFiltering } =
-  videogamesSlice.actions
+export const {
+  setVideogames,
+  setVideogame,
+  orderVideogames,
+  filterVideogames,
+} = videogamesSlice.actions
 export default videogamesSlice.reducer

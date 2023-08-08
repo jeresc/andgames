@@ -23,7 +23,6 @@ import {
 
 export const Videogame = (videogame) => {
 
-
   const renderPlatform = (platform) => {
     switch (platform) {
       case 'PC':

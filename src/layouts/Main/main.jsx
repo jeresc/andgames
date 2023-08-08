@@ -8,11 +8,9 @@ export const Main = () => {
   const shouldShowNav = location.pathname !== '/'
 
   return (
-    <>
-      <MainContainer>
-        {shouldShowNav && <Nav />}
-        <Outlet />
-      </MainContainer>
-    </>
+    <MainContainer>
+      {shouldShowNav && <Nav />}
+      <Outlet />
+    </MainContainer>
   )
 }

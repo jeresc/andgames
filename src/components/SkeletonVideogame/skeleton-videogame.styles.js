@@ -12,25 +12,28 @@ export const Card = styled.div`
 export const Title = styled.h3`
   font-size: 2.2rem;
   font-weight: bold;
-  color: #fff;
+  width: 60%;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  animation: skeleton-loading 1s linear infinite alternate;
 `
 
 export const Rating = styled.p`
   text-align: center;
-  color: ${({ rating }) =>
-    rating > 2 ? (rating > 3.5 ? '#af0' : '#fb0') : '#d00'};
-  border: 1px solid
-    ${({ rating }) => (rating > 2 ? (rating > 3.5 ? '#af0' : '#fb0') : '#d00')};
   border-radius: 0.7rem;
-  padding: 0.5rem;
+  width: 4.3rem;
+  height: 3rem;
+  animation: skeleton-loading 1s linear infinite alternate;
 `
 
 export const Description = styled.p``
 
-export const PlatformLogo = styled.img`
+export const PlatformLogo = styled.div`
   width: 2rem;
   height: 2rem;
   object-fit: contain;
+  border-radius: 50%;
+  animation: skeleton-loading 1s linear infinite alternate;
 `
 
 export const CardSubheading = styled.div`
@@ -48,13 +51,18 @@ export const LogoContainer = styled.div`
 export const CardImage = styled.div`
   width: 100%;
   height: 200px;
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+  border-radius: 1.2rem 1.2rem 0 0;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 1.2rem 1.2rem 0 0;
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(0, 0%, 20%);
+    }
+
+    100% {
+      background-color: hsl(0, 0%, 45%);
+    }
   }
 `
 
@@ -63,4 +71,15 @@ export const CardInfo = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
+`
+
+export const Info = styled.p`
+  width: 40%;
+  height: 1.8rem;
+  border-radius: 0.7rem;
+  animation: skeleton-loading 1s linear infinite alternate;
+
+  &:last-child {
+    width: 50%;
+  }
 `

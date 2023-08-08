@@ -8,36 +8,19 @@ import {
   FormOption,
 } from './videogame-form.styles'
 import { AddForm } from '@/components'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { fetchGenres } from '@/redux'
+import { removeInputField } from '../../redux'
 
 export const VideogameForm = () => {
   const [showAddForm, setShowAddForm] = useState(false)
-  const [options, setOptions] = useState({
-    genres: [
-      { id: 1, name: 'Action' },
-      { id: 2, name: 'Adventure' },
-    ],
-    platforms: [],
-  })
-  const [selectedOptions, setSelectedOptions] = useState({
-    genres: [],
-    platforms: []
-  })
+  const {genres}= useSelector((state) => state.form.inputFields)
 
-  const deleteOption = (tag) => {
-    return (id) =>
-      setOptions({
-        ...options,
-        [tag]: options[tag].filter((option) => option.id !== id),
-      })
-  }
-
-  const addSelectedOption = (tag) => {
-    return (option) =>
-      setSelectedOptions({
-        ...selectedOptions,
-        [tag]: [...selectedOptions[tag], option],
-      })
-  }
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchGenres())
+  }, [])
 
   return (
     <FormContainer>
@@ -50,16 +33,15 @@ export const VideogameForm = () => {
         </button>
         {showAddForm && (
           <AddForm
+            field="genres"
             setShowAddForm={setShowAddForm}
-            options={options.genres}
-            deleteOption={deleteOption('genres')}
-            addSelectedOption={addSelectedOption('genres')}
-            selectedOptions={selectedOptions.genres}
           />
         )}
-        {selectedOptions.genres.map((option) => (
-          <div key={option.id}>{option.name}</div>
-        ))}
+        { genres.filter(options => options.selected === true).map((option) => (
+          <div key={option.id} onClick={() => {
+            dispatch(removeInputField({ field: 'genres', id: option.id }))
+          }}>{option.name}</div>
+        )) }
       </Form>
     </FormContainer>
   )

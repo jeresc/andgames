@@ -6,34 +6,46 @@ import {
   Option,
 } from './add-form.styles'
 import { Button } from '@/components'
+import { useDispatch, useSelector } from 'react-redux'
+import { addInputField, resetInputField, updateInitialFields, removeInputField  } from '@/redux'
 
-export const AddForm = ({ setShowAddForm, options, deleteOption, selectedOptions, addSelectedOption}) => {
-  const [toggleOptions, setToggleOptions] = useState(true)
+export const AddForm = ({ field, setShowAddForm }) => {
+
+  const [showOptions, setShowOptions] = useState(true)
+  const {inputFields}= useSelector((state) => state.form)
+  const inputOptions = inputFields[field]
+  const dispatch = useDispatch()
 
   return (
     <FormContainer>
       <Form>
         <Button
           action={() => {
-            console.log(selectedOptions)
             setShowAddForm(false)
+            dispatch(updateInitialFields({ field }))
           }}
         >
           Save
         </Button>
-        <Button action={() => setShowAddForm(false)}>Cancel</Button>
-        <button onClick={() => setToggleOptions(!toggleOptions)}>
-          show options
+        <Button action={() => {
+          setShowAddForm(false)
+          dispatch(resetInputField({ field }))
+        }}>Cancel</Button>
+        <button onClick={() => {
+          setShowOptions(!showOptions)
+        }}>
+          Show options
         </button>
-        {toggleOptions && (
+        {showOptions && (
           <OptionsContainer>
-            {options && options.map((option) => (
+            {inputOptions && inputOptions.filter((option) => option.selected === false).map((option) => (
               <Option
-                key={option.name}
+                key={option.id}
                 onClick={() => {
-                  addSelectedOption(option)
-                  deleteOption(option.id)
-                  setToggleOptions(!toggleOptions)
+                  console.log(dispatch(addInputField({ id: option.id, field })))
+                  console.log({field, id: option.id})
+    console.log(inputOptions)
+                  setShowOptions(!showOptions)
                 }}
               >
                 {option.name}
@@ -41,8 +53,10 @@ export const AddForm = ({ setShowAddForm, options, deleteOption, selectedOptions
             ))}
           </OptionsContainer>
         )}
-        {selectedOptions.map((selectedOption) => (
-          <Option key={selectedOption.id}>{selectedOption.name}</Option>
+        {inputOptions.filter((option) => option.selected === true).map((option) => (
+          <Option key={option.id} onClick={() => {
+            dispatch(removeInputField({ field, id: option.id}))
+          }}>{option.name}</Option>
         ))}
       </Form>
     </FormContainer>

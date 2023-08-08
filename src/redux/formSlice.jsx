@@ -2,43 +2,70 @@ import { createSlice } from '@reduxjs/toolkit'
 import { fetchGenres } from './actions'
 
 const initialState = {
-  genres: [],
-  platforms: []
+  inputFields: {
+    genres: [],
+    platforms: [],
+  },
+  initialFields: {
+    genres: [],
+    platforms: [],
+  },
 }
 
 const formSlice = createSlice({
   name: 'form',
   initialState,
   reducers: {
-    addGenre: (state, action) => {
-      state.genres = [...state.genres, action.payload]
+    addInputField: (state, action) => {
+      state.inputFields[action.payload.field] = state.inputFields[
+        action.payload.field
+      ].map((element) =>
+        element.id == action.payload.id
+          ? { ...element, selected: true }
+          : element
+      )
     },
-    addPlatform: (state, action) => {
-      state.platforms = [...state.platforms, action.payload]
+    removeInputField: (state, action) => {
+      state.inputFields[action.payload.field] = state.inputFields[
+        action.payload.field
+      ].map((element) =>
+        element.id == action.payload.id
+          ? { ...element, selected: false }
+          : element
+      )
     },
-    removeGenre: (state, action) => {
-      state.genres = state.genres.filter((genre) => genre.id !== action.payload)
+    resetInputField: (state, action) => {
+      state.inputFields[action.payload.field] =
+        state.initialFields[action.payload.field]
     },
-    removePlatform: (state, action) => {
-      state.platforms = state.platforms.filter((platform) => platform.id !== action.payload)
+    updateInitialFields: (state, action) => {
+      state.initialFields[action.payload.field] =
+        state.inputFields[action.payload.field]
     },
-    resetGenres: (state) => {
-      state.genres = []
-    },
-    resetPlatforms: (state) => {
-      state.platforms = []
-    }
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchGenres.pending, (state) => {
-      state.loading = true
-    })
+    builder.addCase(fetchGenres.pending, (state) => {})
     builder.addCase(fetchGenres.fulfilled, (state, action) => {
-      state.loading = false
-      state.genres = action.payload
+      state.initialFields.genres = action.payload.map((genre) => {
+        return {
+          ...genre,
+          selected: false,
+        }
+      })
+      state.inputFields.genres = action.payload.map((genre) => {
+        return {
+          ...genre,
+          selected: false,
+        }
+      })
     })
-  }
+  },
 })
 
-export const { setGenres, setPlatforms, resetGenres, resetPlatforms } = formSlice.actions
+export const {
+  addInputField,
+  removeInputField,
+  resetInputField,
+  updateInitialFields,
+} = formSlice.actions
 export default formSlice.reducer
