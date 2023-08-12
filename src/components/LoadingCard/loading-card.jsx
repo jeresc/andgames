@@ -9,9 +9,9 @@ import {
   Description,
   PlatformLogo,
   Info,
-} from './skeleton-videogame.styles'
+} from './loading-card.styles';
 
-export const SkeletonVideogame = () => {
+export const LoadingCard = () => {
   return (
     <Card>
       <CardImage></CardImage>
@@ -30,5 +30,5 @@ export const SkeletonVideogame = () => {
         <Info />
       </CardInfo>
     </Card>
-  )
-}
+  );
+};

@@ -2,17 +2,33 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchVideogames = createAsyncThunk(
   'videogames/fetch',
-  async ({ page, name, page_size }) => {
+  async ({ page, name, page_size, filter, order, genres }) => {
     try {
       const res = await fetch(
-        `http://localhost:3001/api/videogames?page=${page}${
-          page_size ? `&page_size=${page_size}` : ''
-        }${name ? `&name=${name}` : ''}`
+        `http://localhost:3001/api/videogames?page=${page}` +
+          `&${page_size ? `page_size=${page_size}` : 'page_size'}` +
+          `&${name ? `name=${name}` : 'name'}` +
+          `&${filter ? `filter=${filter}` : 'filter'}` +
+          `&${order ? `order=${order}` : 'order'}` +
+          `&${genres.length ? `genres=${genres.join('&genres=')}` : 'genres'}`
       )
       const videogames = await res.json()
       return videogames
     } catch (error) {
       return []
+    }
+  }
+)
+
+export const fetchVideogameById = createAsyncThunk(
+  'videogame/fetch',
+  async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/videogames/${id}`)
+      const videogame = await res.json()
+      return videogame
+    } catch (error) {
+      return {}
     }
   }
 )

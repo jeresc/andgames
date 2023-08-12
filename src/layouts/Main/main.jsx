@@ -5,7 +5,7 @@ import { MainContainer } from './main.styles'
 export const Main = () => {
   const location = useLocation()
 
-  const shouldShowNav = location.pathname !== '/'
+  const shouldShowNav = location.pathname !== '/' 
 
   return (
     <MainContainer>

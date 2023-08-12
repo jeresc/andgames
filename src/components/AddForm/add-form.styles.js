@@ -33,3 +33,7 @@ export const Option = styled.div`
   background-color: #303030;
   padding: 1rem;
 `
+
+export const AddButton = styled.button`
+
+`

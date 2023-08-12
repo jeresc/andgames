@@ -9,9 +9,8 @@ export const Nav = () => {
 
   return (
     <NavContainer >
-      <NavLogo src={logo} alt="logo" />
+      <NavLogo src={logo} alt="logo" onClick={() => {navigate('/videogames')}} />
       <SearchBar />
-      <NavButton />
       <NavButton onClick={() => {navigate('videogames/new')}}>New</NavButton>
     </NavContainer>
   )

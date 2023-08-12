@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const NavContainer = styled.nav`
-  width: 100vw;
+  width: 100%;
   height: 8.8rem;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@ export const NavLogo = styled.img`
   height: 100%;
   object-fit: cover;
   width: auto;
-
+  cursor: pointer;
 `
 
 export const NavButton = styled.button`
