@@ -5,7 +5,7 @@ export const fetchVideogames = createAsyncThunk(
   async ({ page, name, page_size, filter, order, genres }) => {
     try {
       const res = await fetch(
-        `http://localhost:3001/api/videogames?page=${page}` +
+        `${import.meta.env.VITE_API_URL}/videogames?page=${page}` +
           `&${page_size ? `page_size=${page_size}` : 'page_size'}` +
           `&${name ? `name=${name}` : 'name'}` +
           `&${filter ? `filter=${filter}` : 'filter'}` +
@@ -24,7 +24,7 @@ export const fetchVideogameById = createAsyncThunk(
   'videogame/fetch',
   async (id) => {
     try {
-      const res = await fetch(`http://localhost:3001/api/videogames/${id}`)
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/videogames/${id}`)
       const videogame = await res.json()
       return videogame
     } catch (error) {
@@ -35,10 +35,27 @@ export const fetchVideogameById = createAsyncThunk(
 
 export const fetchGenres = createAsyncThunk('genres/fetch', async () => {
   try {
-    const res = await fetch('http://localhost:3001/api/genres')
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/genres`)
     const genres = await res.json()
     return genres
   } catch (error) {
     return []
   }
 })
+
+export const postVideogame = createAsyncThunk(
+  'videogame/post',
+  async (videogame) => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/videogames`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(videogame),
+      })
+    } catch (error) {
+      return {}
+    }
+  }
+)

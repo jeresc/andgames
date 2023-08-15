@@ -7,6 +7,7 @@ export const StyledOrderAndFilter = styled.div`
   gap: 1.6rem;
   place-items: center;
   place-content: center;
+  position: relative;
 `;
 
 export const DropdownButton = styled.button`
@@ -45,6 +46,10 @@ export const OrderContainer = styled.div`
   place-items: center;
   place-content: center;
   position: relative;
+
+  @media screen and (max-width: 1024px) {
+    position: static;
+  }
 `;
 
 export const OrderOption = styled.img`
@@ -80,6 +85,13 @@ export const Dropdown = styled.div`
     -webkit-transform 0.2s ease-in-out;
   visibility: ${({ $active }) => ($active ? 'visible' : 'hidden')};
   opacity: ${({ $active }) => ($active ? 1 : 0)};
+
+  @media screen and (max-width: 1024px) {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const FilterDropdown = styled(Dropdown)`
@@ -109,6 +121,10 @@ export const FilterContainer = styled.div`
   place-items: center;
   place-content: center;
   position: relative;
+
+  @media screen and (max-width: 1024px) {
+    position: static;
+  }
 `;
 
 export const FilterButton = styled.button`
@@ -125,8 +141,13 @@ export const GenresContainer = styled.div`
   max-height: 220px;
   overflow-x: hidden;
   overflow-y: auto;
-  grid-gap: 0.8rem;
-  padding: 1.6rem;
+  grid-gap: 1rem 0.4rem;
+  padding: 1.4rem;
+  margin: 1rem 0;
+
+  @media screen and (max-width: 480px) {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
 `;
 
 export const OptionIcon = styled.img`

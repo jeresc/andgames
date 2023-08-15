@@ -10,7 +10,7 @@ export const useSearchBar = () => {
   const [debouncedSearch, setDebouncedSearch] = useState(search);
 
   const dispatch = useDispatch();
-  const { videogames, order, filter, genres_filter } = useSelector(
+  const { videogames, videogamesCount, order, filter, genres_filter, loading } = useSelector(
     store => store.videogames,
   );
 
@@ -29,7 +29,6 @@ export const useSearchBar = () => {
 
   const clearResults = () => {
     dispatch(fetchVideogames({ page, filter, order, genres: genres_filter }));
-    console.log(genres_filter);
   };
 
   useEffect(() => {
@@ -50,5 +49,7 @@ export const useSearchBar = () => {
   return {
     debouncedSearch,
     setDebouncedSearch,
+    videogamesCount,
+    loading,
   };
 };

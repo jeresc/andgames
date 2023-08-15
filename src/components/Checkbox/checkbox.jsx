@@ -20,7 +20,7 @@ export const Checkbox = ({ element, toggleElement }) => {
       }}
     >
       {<CheckboxImage src={checked ? checkedBox : uncheckedBox} />}
-      <CheckboxValue>{truncate(element.name, 8)}</CheckboxValue>
+      <CheckboxValue>{truncate(element.name, 9)}</CheckboxValue>
     </StyledCheckbox>
   );
 };

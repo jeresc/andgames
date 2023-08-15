@@ -3,7 +3,9 @@ import { fetchVideogames, fetchGenres, fetchVideogameById } from './actions'
 
 const initialState = {
   videogames: [],
+  videogamesCount: 0,
   genres: [],
+  platforms: [],
   videogame: {},
   order: 'name_asc',
   filter: 'none',
@@ -49,6 +51,7 @@ const videogamesSlice = createSlice({
     builder.addCase(fetchVideogames.fulfilled, (state, action) => {
       state.loading = false
       state.videogames = action.payload.results
+      state.videogamesCount = action.payload.count
     })
     builder.addCase(fetchGenres.pending, (state) => {
     })

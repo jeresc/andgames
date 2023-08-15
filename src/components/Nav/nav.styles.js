@@ -18,7 +18,12 @@ export const NavLogo = styled.img`
 
 export const NavButton = styled.button`
   width: 6rem;
-  height: 2rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  height: 44px;
   padding: 0.5rem;
   border: none;
+  border-radius: 16px;
+  background-color: #282828;
+  color: #fff;
 `

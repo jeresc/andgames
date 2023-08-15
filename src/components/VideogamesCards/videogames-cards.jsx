@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Videogame, LoadingCard } from '@/components';
 import { CardContainer } from './videogames-cards.styles';
 import { useEffect } from 'react';
-import { fetchGenres } from '@/redux';
+import { fetchGenres, addNotification, setForm } from '@/redux';
 
 export const Videogames = () => {
   const { videogames, loading } = useSelector(store => store.videogames);
@@ -17,6 +17,19 @@ export const Videogames = () => {
     <div>
       <h2>New and exciting</h2>
       <p>Based on players rating</p>
+      <button
+        onClick={() => {
+          dispatch(
+            addNotification({
+              message: 'Your game has been successfully added',
+              type: 'success',
+              id: Math.random(),
+            }),
+          );
+        }}
+      >
+        Add notification
+      </button>
       <CardContainer>
         {loading ? (
           Array.apply(null, { length: 15 }).map((_, index) => (

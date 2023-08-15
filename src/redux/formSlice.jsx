@@ -4,12 +4,34 @@ import { fetchGenres } from './actions'
 const initialState = {
   inputFields: {
     genres: [],
-    platforms: [],
+    platforms: [
+      { id: 1, name: 'PC', selected: false },
+      { id: 2, name: 'PlayStation 4', selected: false },
+      { id: 3, name: 'Xbox One', selected: false },
+      { id: 4, name: 'Nintendo Switch', selected: false },
+      { id: 5, name: 'macOS', selected: false },
+      { id: 5, name: 'iOS', selected: false },
+      { id: 5, name: 'iOS', selected: false },
+      { id: 5, name: 'Android', selected: false },
+      { id: 5, name: 'Linux', selected: false },
+    ],
   },
   initialFields: {
     genres: [],
-    platforms: [],
+    platforms: [
+      { id: 1, name: 'PC', selected: false },
+      { id: 2, name: 'PlayStation 4', selected: false },
+      { id: 3, name: 'Xbox One', selected: false },
+      { id: 4, name: 'Nintendo Switch', selected: false },
+      { id: 5, name: 'macOS', selected: false },
+      { id: 5, name: 'iOS', selected: false },
+      { id: 5, name: 'iOS', selected: false },
+      { id: 5, name: 'Android', selected: false },
+      { id: 5, name: 'Linux', selected: false },
+    ],
   },
+  image: null,
+  rating: 0,
 }
 
 const formSlice = createSlice({
@@ -42,6 +64,9 @@ const formSlice = createSlice({
       state.initialFields[action.payload.field] =
         state.inputFields[action.payload.field]
     },
+    setForm: (state, action) => {
+      state[action.payload.field] = action.payload.value
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchGenres.pending, (state) => {})
@@ -67,5 +92,6 @@ export const {
   removeInputField,
   resetInputField,
   updateInitialFields,
+  setForm,
 } = formSlice.actions
 export default formSlice.reducer

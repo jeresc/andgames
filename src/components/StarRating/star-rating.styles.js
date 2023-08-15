@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const Star = styled.img`
-  height: 33px;
-  width: 19px;
+  height: 35px;
+  width: 20px;
   object-fit: cover;
   object-position: left;
   cursor: pointer;

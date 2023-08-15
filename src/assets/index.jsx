@@ -19,3 +19,5 @@ export { default as arrowUpNumbers } from './arrow-up-1-9.svg';
 export { default as arrowDownLetters } from './arrow-down-a-z.svg';
 export { default as arrowUpLetters } from './arrow-up-a-z.svg';
 export { default as chevronDown } from './chevron-down.svg';
+export { default as magnifyingGlass } from './magnifying-glass.svg';
+export { default as checkmark } from './checkmark.svg';
