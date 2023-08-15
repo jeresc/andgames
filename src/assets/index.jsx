@@ -21,3 +21,8 @@ export { default as arrowUpLetters } from './arrow-up-a-z.svg';
 export { default as chevronDown } from './chevron-down.svg';
 export { default as magnifyingGlass } from './magnifying-glass.svg';
 export { default as checkmark } from './checkmark.svg';
+export { default as brokenHeart } from './broken-heart.svg';
+export { default as checkedCircle } from './checked-circle.svg';
+export { default as circle } from './circle.svg';
+export { default as xmark } from './xmark.svg';
+export { default as filterIcon } from './filter.svg';

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchVideogameById, resetVideogame } from "../../redux"
 
-export const VideogameDetail = () => {
+export const VideogameDetailCard = () => {
 
   const { videogame, loading } = useSelector(store => store.videogames)
   const dispatch = useDispatch()

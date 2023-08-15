@@ -11,6 +11,7 @@ const initialState = {
   filter: 'none',
   genres_filter: [],
   loading: false,
+  fetchedRequests: 0
 }
 
 const videogamesSlice = createSlice({
@@ -52,6 +53,7 @@ const videogamesSlice = createSlice({
       state.loading = false
       state.videogames = action.payload.results
       state.videogamesCount = action.payload.count
+      state.fetchedRequests = state.fetchedRequests + 1
     })
     builder.addCase(fetchGenres.pending, (state) => {
     })

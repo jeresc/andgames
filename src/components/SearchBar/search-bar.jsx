@@ -1,13 +1,14 @@
 import { useSearchBar } from '@/hooks'
-import { SearchBarInput, SearchBarContainer, SearchBarIcon } from './search-bar.styles'
-import { magnifyingGlass } from '@/assets'
+import { SearchBarInput, SearchBarContainer, SearchBarIcon, SearchBarIconX } from './search-bar.styles'
+import { magnifyingGlass, xmark } from '@/assets'
 
 export const SearchBar = () => {
   const {
     debouncedSearch,
     setDebouncedSearch,
     videogamesCount,
-    loading
+    loading,
+    fetchedRequests,
   } = useSearchBar()
 
   return (
@@ -18,9 +19,10 @@ export const SearchBar = () => {
         name="search-bar"
         value={debouncedSearch}
         onChange={(event) => setDebouncedSearch(event.target.value)}
-        disabled={loading}
-        placeholder={loading ? 'Search games' : `Search ${videogamesCount} games`}
+        disabled={fetchedRequests < 1}
+        placeholder={loading ? 'Search games' : `Search ${videogamesCount ? videogamesCount : ""} games`}
       />
+      <SearchBarIconX src={xmark} onClick={() => setDebouncedSearch('')} alt="Clear Input icon"/>
     </SearchBarContainer>
   )
 }

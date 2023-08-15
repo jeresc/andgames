@@ -10,7 +10,7 @@ export const useSearchBar = () => {
   const [debouncedSearch, setDebouncedSearch] = useState(search);
 
   const dispatch = useDispatch();
-  const { videogames, videogamesCount, order, filter, genres_filter, loading } = useSelector(
+  const { videogames, videogamesCount, order, filter, genres_filter, loading, fetchedRequests } = useSelector(
     store => store.videogames,
   );
 
@@ -34,7 +34,7 @@ export const useSearchBar = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setSearch(debouncedSearch);
-    }, 300);
+    }, 400);
     return () => clearTimeout(timer);
   }, [debouncedSearch]);
 
@@ -51,5 +51,6 @@ export const useSearchBar = () => {
     setDebouncedSearch,
     videogamesCount,
     loading,
+    fetchedRequests,
   };
 };

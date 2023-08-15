@@ -15,7 +15,7 @@ export const SearchBarInput = styled.input`
   background: #282828;
   color: #fff;
   font-size: 1.7rem;
-  padding: 0 10px 0 40px;
+  padding: 0 40px 0 40px;
   border-radius: 20px;
   outline: none;
 
@@ -28,6 +28,14 @@ export const SearchBarInput = styled.input`
 export const SearchBarIcon = styled.img`
   position: absolute;
   left: 10px;
+  top: 12px;
+  width: 20px;
+  height: 20px;
+`
+
+export const SearchBarIconX = styled.img`
+  position: absolute;
+  right: 10px;
   top: 12px;
   width: 20px;
   height: 20px;

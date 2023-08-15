@@ -7,10 +7,13 @@ import {
   FilterButton,
   DropdownButton,
   FilterDropdown,
+  FilterHeading,
+  HeadingTitle,
   GenresContainer,
   ToggleIcon,
   OptionIcon,
-  OrderOption
+  OrderOption,
+  OriginOptions,
 } from './order-and-filter.styles';
 import { chevronDown } from '@/assets';
 import { useOrderAndFilter } from '@/hooks';
@@ -20,6 +23,9 @@ import {
   arrowDownNumbers,
   arrowUpLetters,
   arrowUpNumbers,
+  checkedCircle,
+  circle,
+  filterIcon
 } from '@/assets';
 
 export const OrderAndFilter = () => {
@@ -33,14 +39,15 @@ export const OrderAndFilter = () => {
     genres,
     toggleOriginFilter,
     order,
-    setOrderIcon
+    filter,
+    setOrderIcon,
   } = useOrderAndFilter();
 
   return (
     <StyledOrderAndFilter>
       <OrderContainer>
         <DropdownButton onClick={toggleOrder}>
-          <OrderOption src={setOrderIcon(order)}/>
+          <OrderOption src={setOrderIcon(order)} />
           Order By
           <ToggleIcon src={chevronDown} alt="" $active={orderIsOpen} />
         </DropdownButton>
@@ -67,14 +74,15 @@ export const OrderAndFilter = () => {
       </OrderContainer>
       <FilterContainer>
         <DropdownButton onClick={toggleFilter}>
+          <OrderOption src={filterIcon} />
           Filter By
           <ToggleIcon src={chevronDown} alt="" $active={filterIsOpen} />
         </DropdownButton>
         {
           <FilterDropdown $active={filterIsOpen}>
-            <div>
-              <h5>Genres</h5>
-            </div>
+            <FilterHeading>
+              <HeadingTitle>Genres</HeadingTitle>
+            </FilterHeading>
             <GenresContainer>
               {genres.map(genre => (
                 <Checkbox
@@ -84,16 +92,21 @@ export const OrderAndFilter = () => {
                 />
               ))}
             </GenresContainer>
-            <div>
-              <h5>Origin</h5>
+            <HeadingTitle>Origin</HeadingTitle>
+            <OriginOptions>
               <FilterButton onClick={() => handleFilter('none')}>
-                All
+                <img src={filter === 'none' ? checkedCircle: circle} alt="" />
+                All videogames
               </FilterButton>
-              <FilterButton onClick={() => handleFilter('db')}>DB</FilterButton>
               <FilterButton onClick={() => handleFilter('api')}>
-                API
+                <img src={filter === 'api' ? checkedCircle: circle  } alt="" />
+                Created by API
               </FilterButton>
-            </div>
+              <FilterButton onClick={() => handleFilter('db')}>
+                <img src={filter === 'db' ? checkedCircle: circle} alt="" />
+                Created by users
+              </FilterButton>
+            </OriginOptions>
           </FilterDropdown>
         }
       </FilterContainer>

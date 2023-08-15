@@ -35,10 +35,10 @@ const navigate = useNavigate()
       case 'PC':
         logo = windows
         break
-      case 'PlayStation 4':
+      case 'PlayStation':
         logo = playstation
         break
-      case 'Xbox One':
+      case 'Xbox':
         logo = xbox
         break
       case 'iOS':
@@ -47,13 +47,13 @@ const navigate = useNavigate()
       case 'Android':
         logo = android
         break
-      case 'macOS':
+      case 'Apple Macintosh':
         logo = apple
         break
       case 'Linux':
         logo = linux
         break
-      case 'Nintendo Switch':
+      case 'Nintendo':
         logo = nintendo
         style = { width: '1.6rem' }
         break

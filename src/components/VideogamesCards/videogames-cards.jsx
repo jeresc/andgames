@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Videogame, LoadingCard } from '@/components';
-import { CardContainer } from './videogames-cards.styles';
+import { CardContainer, NoResultsFound, VideogamesContainer } from './videogames-cards.styles';
 import { useEffect } from 'react';
 import { fetchGenres, addNotification, setForm } from '@/redux';
+import { brokenHeart } from '@/assets';
 
 export const Videogames = () => {
   const { videogames, loading } = useSelector(store => store.videogames);
@@ -14,8 +15,8 @@ export const Videogames = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h2>New and exciting</h2>
+    <VideogamesContainer>
+      <h2 style={{ fontWeight: "800", fontSize: "6rem"}}>New and exciting</h2>
       <p>Based on players rating</p>
       <button
         onClick={() => {
@@ -51,9 +52,13 @@ export const Videogames = () => {
             );
           })
         ) : (
-          <h1>Sorry, we have no videogames</h1>
+          <NoResultsFound>
+            <img src={brokenHeart} alt="" />
+            <h3>No results found</h3>
+            <p>Please try with another keywords or filters</p>
+          </NoResultsFound>
         )}
       </CardContainer>
-    </div>
+    </VideogamesContainer>
   );
 };

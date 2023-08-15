@@ -1,16 +1,16 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import { Main } from '@/layouts'
 
 import {
   NotFound,
   Landing,
   Home,
-  VideogameDetail,
+  VideogameDetailCard,
   VideogameForm,
   AboutMe
 } from '@/pages'
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
     element: <Main />,
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
           },
           {
             path: ':videogameId',
-            element: <VideogameDetail />,
+            element: <VideogameDetailCard />,
           },
         ],
       },

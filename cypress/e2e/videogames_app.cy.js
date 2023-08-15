@@ -6,7 +6,7 @@ describe("Videogames App", () => {
   }) 
 
   it("can search for a videogame", () => {
-    cy.visit("http://localhost:5173/videogames")
+    cy.visit("http://localhost:5173/#/videogames")
     cy.get("input[name='search-bar']").type("The Witcher")
     cy.get("h3").contains("The Witcher")
   })

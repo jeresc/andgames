@@ -9,7 +9,7 @@ import {
 } from '@/assets';
 
 export const useOrderAndFilter = () => {
-  const { genres, genres_filter, order } = useSelector((store) => store.videogames)
+  const { genres, genres_filter, order, filter } = useSelector((store) => store.videogames)
 
   const dispatch = useDispatch()
 
@@ -66,6 +66,7 @@ export const useOrderAndFilter = () => {
     genres,
     toggleOriginFilter,
     order,
+    filter,
     setOrderIcon
   }
 }
