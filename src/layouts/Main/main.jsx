@@ -9,7 +9,8 @@ export const Main = () => {
   const { notifications } = useSelector(state => state.notifications);
   const location = useLocation();
 
-  const shouldShowNav = location.pathname !== '/';
+  const blacklistedPaths = ['/', '/admin/home'];
+  const shouldShowNav = !blacklistedPaths.includes(location.pathname);
 
   useEffect(() => {
     console.log(notifications)

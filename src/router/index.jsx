@@ -1,5 +1,5 @@
-import { createHashRouter } from 'react-router-dom'
-import { Main } from '@/layouts'
+import { createHashRouter } from 'react-router-dom';
+import { Main } from '@/layouts';
 
 import {
   NotFound,
@@ -7,8 +7,10 @@ import {
   Home,
   VideogameDetailCard,
   VideogameForm,
-  AboutMe
-} from '@/pages'
+  AboutMe,
+  Admin,
+} from '@/pages';
+import { AdminHome } from '../pages';
 
 export const router = createHashRouter([
   {
@@ -39,8 +41,18 @@ export const router = createHashRouter([
       },
       {
         path: 'about',
-        element: <AboutMe/>
-      }
+        element: <AboutMe />,
+      },
+      {
+        path: 'admin',
+        element: <Admin />,
+        children: [
+          {
+            path: "home",
+            element: <AdminHome />
+          }
+        ]
+      },
     ],
   },
-])
+]);

@@ -11,3 +11,4 @@ export * from './StarRating/star-rating';
 export * from './TabBar/tab-bar';
 export * from './Icons/icons';
 export * from './UploadWidget/upload-widget';
+export * from './AdminNav/admin-nav';

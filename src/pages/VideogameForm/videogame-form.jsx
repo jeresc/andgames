@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   FormContainer,
   Form,
@@ -17,8 +18,6 @@ import {
   CancelButton,
 } from './videogame-form.styles';
 import { AddForm, StarRating, UploadWidget } from '@/components';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import {
   removeInputField,
   postVideogame,
@@ -27,7 +26,7 @@ import {
 } from '@/redux';
 import { validateForm } from '@/helpers';
 import { useNavigate } from 'react-router-dom';
-import { setForm } from '../../redux';
+import { setForm } from '@/redux';
 
 export const VideogameForm = () => {
   const [showAddPlatformForm, setShowAddPlatformForm] = useState(false);

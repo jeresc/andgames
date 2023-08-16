@@ -11,7 +11,8 @@ export const StyledOrderAndFilter = styled.div`
   @media screen and (min-width: 1024px) {
     width: 300px;
     height: 100vh;
-    top: 100px;
+    top: 200px;
+    background-color: #121212;
 
     height: fit-content;
     flex-direction: column;
