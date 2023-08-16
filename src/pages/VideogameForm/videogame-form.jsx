@@ -19,9 +19,15 @@ import {
 import { AddForm, StarRating, UploadWidget } from '@/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { removeInputField, postVideogame, addNotification, resetInputField } from '@/redux';
+import {
+  removeInputField,
+  postVideogame,
+  addNotification,
+  resetInputField,
+} from '@/redux';
 import { validateForm } from '@/helpers';
 import { useNavigate } from 'react-router-dom';
+import { setForm } from '../../redux';
 
 export const VideogameForm = () => {
   const [showAddPlatformForm, setShowAddPlatformForm] = useState(false);
@@ -99,13 +105,16 @@ export const VideogameForm = () => {
       genres: videogame.genres,
     });
     setErrors(validate);
-    console.log(errors);
   }, [
     videogame.image,
     videogame.rating,
     videogame.platforms,
     videogame.genres,
   ]);
+
+  useEffect(() => {
+    console.log(videogame)
+  }, [videogame])
 
   return (
     <FormContainer>
@@ -124,14 +133,17 @@ export const VideogameForm = () => {
         <FormGroup>
           <FormLabel htmlFor="image">Image</FormLabel>
           <FormError>{errors.image}</FormError>
-          <UploadWidget />
+          <UploadWidget key="upload-widget" />
         </FormGroup>
 
         <FormGroup>
           <FormLabel htmlFor="genres">Genres</FormLabel>
           <FormError>{errors.genres}</FormError>
           <OptionsContainer>
-            <AddButton onClick={() => setShowAddGenreForm(!showAddGenreForm)}>
+            <AddButton
+              field="genres"
+              onClick={() => setShowAddGenreForm(!showAddGenreForm)}
+            >
               Add options
             </AddButton>
             {showAddGenreForm && (
@@ -164,6 +176,7 @@ export const VideogameForm = () => {
           <OptionsContainer>
             <AddButton
               onClick={() => setShowAddPlatformForm(!showAddPlatformForm)}
+              field="platforms"
             >
               Add options
             </AddButton>
@@ -217,6 +230,20 @@ export const VideogameForm = () => {
             value={videogame.released}
           />
         </FormGroup>
+        <button
+          type="button"
+          onClick={() =>
+            dispatch(
+              setForm({
+                field: 'image',
+                value:
+                  'http://3.bp.blogspot.com/_o6PeYNxMNQo/TDypRRCrxBI/AAAAAAAAACE/rEc3a9qan8w/w1200-h630-p-k-no-nu/123750910poq41.jpg',
+              }),
+            )
+          }
+          id="test-image-button"
+          style={{ visibility: 'visible', position: 'absolute', width: 1, height: 1, left: 999 }}
+        ></button>
         <SubmitButton
           type="submit"
           onClick={handleSubmit}
@@ -225,7 +252,8 @@ export const VideogameForm = () => {
             errors.rating ||
             errors.platforms ||
             errors.genres ||
-            errors.description
+            errors.description ||
+            errors.released
           }
         >
           Submit
@@ -241,8 +269,8 @@ export const VideogameForm = () => {
               platforms: [],
               genres: [],
             });
-            dispatch(resetInputField({ field: "genres" }));
-            dispatch(resetInputField({ field: "platforms" }));
+            dispatch(resetInputField({ field: 'genres' }));
+            dispatch(resetInputField({ field: 'platforms' }));
             navigate('/videogames');
           }}
         >

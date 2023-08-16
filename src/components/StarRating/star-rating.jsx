@@ -16,9 +16,10 @@ export const StarRating = () => {
           <Star
             key={index}
             src={index < filledStars ? filledStar : emptyStar}
+            data-rating={index + 1}
             onClick={() => {
               setSelectedStars(filledStars);
-              dispatch(setForm({ field: 'rating', value: filledStars / 2 }));
+              dispatch(setForm({ field: 'rating', value: (index + 1) / 2 }));
             }}
             onMouseOver={() => setFilledStars(index + 1)}
             onMouseOut={() =>

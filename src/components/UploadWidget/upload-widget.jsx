@@ -81,7 +81,7 @@ export const UploadWidget = () => {
 
   return (
     <div>
-      <WidgetButton onClick={openWidget}>Upload Button</WidgetButton>
+      <WidgetButton onClick={openWidget} id="upload-button">Upload Button</WidgetButton>
       {uploadedImage && <UploadedImage src={uploadedImage} />}
     </div>
   );

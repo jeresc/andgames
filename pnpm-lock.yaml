@@ -43,6 +43,9 @@ devDependencies:
   cypress:
     specifier: ^12.17.3
     version: 12.17.3
+  cypress-iframe:
+    specifier: ^1.0.1
+    version: 1.0.1(@types/cypress@1.1.3)
   eslint:
     specifier: ^8.45.0
     version: 8.45.0
@@ -1914,6 +1917,13 @@ packages:
       '@swc/core-win32-x64-msvc': 1.3.72
     dev: true
 
+  /@types/cypress@1.1.3:
+    resolution: {integrity: sha512-OXe0Gw8LeCflkG1oPgFpyrYWJmEKqYncBsD/J0r17r0ETx/TnIGDNLwXt/pFYSYuYTpzcq1q3g62M9DrfsBL4g==}
+    deprecated: This is a stub types definition for cypress (https://cypress.io). cypress provides its own type definitions, so you don't need @types/cypress installed!
+    dependencies:
+      cypress: 12.17.3
+    dev: true
+
   /@types/hoist-non-react-statics@3.3.1:
     resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==}
     dependencies:
@@ -2443,6 +2453,14 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+
+  /cypress-iframe@1.0.1(@types/cypress@1.1.3):
+    resolution: {integrity: sha512-Ne+xkZmWMhfq3x6wbfzK/SzsVTCrJru3R3cLXsoSAZyfUtJDamXyaIieHXeea3pQDXF4wE2w4iUuvCYHhoD31g==}
+    peerDependencies:
+      '@types/cypress': ^1.1.0
+    dependencies:
+      '@types/cypress': 1.1.3
+    dev: true
 
   /cypress@12.17.3:
     resolution: {integrity: sha512-/R4+xdIDjUSLYkiQfwJd630S81KIgicmQOLXotFxVXkl+eTeVO+3bHXxdi5KBh/OgC33HWN33kHX+0tQR/ZWpg==}

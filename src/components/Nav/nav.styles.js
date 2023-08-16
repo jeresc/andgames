@@ -10,7 +10,7 @@ export const NavContainer = styled.nav`
 `
 
 export const NavLogo = styled.img`
-  height: 100%;
+  height: 6.8rem;
   object-fit: cover;
   width: auto;
   cursor: pointer;

@@ -12,9 +12,9 @@ export const validateForm = (videogame) => {
   
   if (!videogame.description) errors.description = "Must contain description"
   if (videogame.description.length < 10) errors.description = "Must be more than 10 characters"
-  if (videogame.description.length > 500) errors.description = "Must be less than 1000 characters"
+  if (videogame.description.length > 700) errors.description = "Must be less than 700 characters"
 
-  if(!videogame.releaseDate) errors.releaseDate = "Must contain release date"
+  if(!videogame.released) errors.released = "Must contain release date"
 
   return errors
 }
