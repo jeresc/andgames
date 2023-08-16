@@ -26,3 +26,8 @@ export { default as checkedCircle } from './checked-circle.svg';
 export { default as circle } from './circle.svg';
 export { default as xmark } from './xmark.svg';
 export { default as filterIcon } from './filter.svg';
+export { default as chess } from './chess.svg';
+export { default as home} from './home.svg';
+export { default as closeAsideArrow } from './left-arrow.svg';
+export { default as bars } from './bars.svg';
+export { default as hammer } from './hammer.svg';
