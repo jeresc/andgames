@@ -79,7 +79,7 @@ const navigate = useNavigate()
   return (
     <Card>
       <CardImage>
-        <img src={videogame.image || imageNotFound} alt="" onClick={() => navigate(`/videogames/${videogame.id}`)}/>
+        <img src={videogame.image || imageNotFound} alt="" onClick={() => navigate(`/home/${videogame.id}`)}/>
       </CardImage>
       <CardInfo>
         <CardSubheading>

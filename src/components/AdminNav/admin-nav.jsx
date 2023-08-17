@@ -7,14 +7,14 @@ import {
 } from './admin-nav.styles';
 import { useLocation } from 'react-router-dom';
 
-export const AdminNav = ({toggleAside}) => {
+export const AdminNav = ({toggleAside, active}) => {
   const location = useLocation();
-  const adminPath = location.pathname.split('/').pop()
+  const adminPath = location.pathname.match(/\/(\w+)\/?$/)[1]
 
   return (
     <AdminNavContainer>
       <LeftNavContainer>
-        <ToggleAside onClick={toggleAside}>
+        <ToggleAside onClick={toggleAside} $active={active}>
           <img src={bars} alt="Toggle Navigation Menu" />
         </ToggleAside>
         <span>{adminPath.replace(/^./, adminPath[0].toUpperCase())}</span>

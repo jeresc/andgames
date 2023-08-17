@@ -1,5 +1,5 @@
 export const AdminHome = () => {
   return (
-    <div>Admin Home</div>
+    <h1>Admin Home</h1>
   );
 }

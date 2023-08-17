@@ -7,10 +7,10 @@ import { useEffect } from 'react';
 
 export const Main = () => {
   const { notifications } = useSelector(state => state.notifications);
-  const location = useLocation();
+  const { pathname } = useLocation();
 
-  const blacklistedPaths = ['/', '/admin/home'];
-  const shouldShowNav = !blacklistedPaths.includes(location.pathname);
+  const blacklistedPaths = ['/'];
+  const shouldShowNav = !blacklistedPaths.includes(pathname) && !/admin/.test(pathname)
 
   useEffect(() => {
     console.log(notifications)

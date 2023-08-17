@@ -9,8 +9,14 @@ import {
   VideogameForm,
   AboutMe,
   Admin,
+  AdminDashboard,
+  AdminHome,
+  AdminModeration,
+  AdminModerationVideogames,
+  AdminModerationGenres,
+  LogIn,
 } from '@/pages';
-import { AdminHome } from '../pages';
+import { redirect } from 'react-router-dom';
 
 export const router = createHashRouter([
   {
@@ -23,7 +29,11 @@ export const router = createHashRouter([
         element: <Landing />,
       },
       {
-        path: 'videogames',
+        path: 'login',
+        element: <LogIn />,
+      },
+      {
+        path: 'home',
         children: [
           {
             index: true,
@@ -44,14 +54,35 @@ export const router = createHashRouter([
         element: <AboutMe />,
       },
       {
-        path: 'admin',
+        path: '/admin',
         element: <Admin />,
         children: [
           {
-            path: "home",
-            element: <AdminHome />
-          }
-        ]
+            path: 'home',
+            element: <AdminHome />,
+          },
+          {
+            path: 'dashboard',
+            element: <AdminDashboard />,
+          },
+          {
+            path: 'moderation',
+            children: [
+              {
+                index: true,
+                element: <AdminModeration />,
+              },
+              {
+                path: 'videogames',
+                element: <AdminModerationVideogames />,
+              },
+              {
+                path: 'genres',
+                element: <AdminModerationGenres />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },

@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
 export const ToggleAside = styled.button`
-  height: 40px;
-  width: 40px;
+  height: 34px;
+  width: 34px;
   outline: none;
   border: none;
-  background-color: #0000;
+  background-color: ${props => (props.$active ? '#303030' : '#0000')};
   border-radius: 8px;
   dispaly: flex;
 
@@ -14,8 +14,8 @@ export const ToggleAside = styled.button`
     background-color: #303030;
   }
   img {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
     object-fit: cover;
   }
 `;
@@ -23,7 +23,7 @@ export const AdminNavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.4rem;
+  padding: 1rem 1rem;
   background-color: #101010;
   height: 60px;
   border-bottom: 1px solid #000;

@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { fetchVideogames } from "../../redux"
 import { useEffect } from "react"
+import { LandingContainer} from "./landing.styles"
 
 export const Landing = () => {
   const dispatch = useDispatch()
@@ -13,9 +14,9 @@ export const Landing = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
-      <h1>Landing</h1>
-      <button onClick={() => navigate("/videogames")}>Go to Home</button>
-    </div>
+    <LandingContainer>
+      <h1>&games</h1>
+      <button onClick={() => navigate("/home")}>Go to Home</button>
+    </LandingContainer>
   )
 }

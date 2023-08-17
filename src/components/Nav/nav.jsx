@@ -13,15 +13,14 @@ export const Nav = () => {
           src={logo}
           alt="logo"
           onClick={() => {
-            navigate('/videogames');
+            navigate('home');
           }}
         />
-        <h1>&games</h1>
       </div>
       <SearchBar />
       <NavButton
         onClick={() => {
-          navigate('videogames/new');
+          navigate('home/new');
         }}
       >
         New

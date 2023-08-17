@@ -1,51 +1,112 @@
-import { useState } from 'react';
 import {
   PanelContainer,
   Aside,
   MainContainer,
   MenuOption,
   MenuHeading,
+  MinimizeArrow,
+  ModerationSubOption,
+  SubOptions,
 } from './admin.styles';
-import { chess, home, closeAsideArrow } from '@/assets';
+import { chess, home, hammer, closeAsideArrow } from '@/assets';
 import { Outlet } from 'react-router-dom';
-import { AdminNav } from '../../components';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { AdminNav } from '@/components';
+import { useAdmin } from '@/hooks';
+import { Navigate } from 'react-router-dom';
+import { getCookie } from '@/helpers';
 
 export const Admin = () => {
-  const [showAside, setShowAside] = useState(true);
-  const navigate = useNavigate();
-
-  const toggleAside = () => {
-    setShowAside(!showAside);
-  };
-
-  useEffect(() => {
-navigate("home")
-  },[navigate]);
+  const {
+    toggleAside,
+    showAside,
+    isAsideMinimized,
+    areOptionsOpen,
+    handleOptionClick,
+    navigate,
+    pathname,
+    minimizeAside,
+    isLoggedIn,
+  } = useAdmin();
 
   return (
     <PanelContainer>
-      <AdminNav toggleAside={toggleAside} />
+      {!isLoggedIn && !getCookie('login_token') && (
+        <Navigate to="/login" replace={true} />
+      )}
+      <AdminNav toggleAside={toggleAside} active={showAside} />
       <MainContainer>
         {showAside && (
-          <Aside>
+          <Aside $isMinimized={isAsideMinimized}>
             <MenuHeading>
-              ADMIN DASHBOARD
-              <img src={closeAsideArrow} alt="" onClick={toggleAside} />
+              {!isAsideMinimized && <span>ADMIN DASHBOARD</span>}
+              <MinimizeArrow
+                onClick={minimizeAside}
+                $isMinimized={isAsideMinimized}
+              >
+                <img src={closeAsideArrow} alt="Minize aside arrow" />
+              </MinimizeArrow>
             </MenuHeading>
-            <MenuOption onClick={() => navigate('home')}>
+            <MenuOption
+              onClick={() => navigate('home')}
+              $active={pathname === '/admin/home'}
+            >
               <img src={home} alt="" />
-              <span>Home</span>
+              {!isAsideMinimized && <span>Home</span>}
             </MenuOption>
-            <MenuOption onClick={() => navigate('dashboard')}>
+            <MenuOption
+              onClick={() => navigate('dashboard')}
+              $active={pathname === '/admin/dashboard'}
+            >
               <img src={chess} alt="" />
-              <span>Dashboard</span>
+              {!isAsideMinimized && <span>Dashboard</span>}
             </MenuOption>
-            <MenuOption onClick={() => navigate('dashboard')}>
-              <img src={chess} alt="" />
-              <span>Moderation</span>
+            <MenuOption
+              onClick={() => handleOptionClick('moderation')}
+              $active={
+                /moderation/.test(pathname) &&
+                (!areOptionsOpen.moderation || isAsideMinimized)
+              }
+            >
+              <img src={hammer} alt="" />
+              {!isAsideMinimized && <span>Moderation</span>}
             </MenuOption>
+            {areOptionsOpen.moderation && !isAsideMinimized && (
+              <SubOptions>
+                <ModerationSubOption
+                  onClick={() => {
+                    navigate('moderation');
+                  }}
+                  $active={
+                    pathname === '/admin/moderation' &&
+                    areOptionsOpen.moderation
+                  }
+                >
+                  {!isAsideMinimized && <span>Overview</span>}
+                </ModerationSubOption>
+                <ModerationSubOption
+                  onClick={() => {
+                    navigate('moderation/videogames');
+                  }}
+                  $active={
+                    pathname === '/admin/moderation/videogames' &&
+                    areOptionsOpen.moderation
+                  }
+                >
+                  {!isAsideMinimized && <span>Videogames</span>}
+                </ModerationSubOption>
+                <ModerationSubOption
+                  onClick={() => {
+                    navigate('moderation/genres');
+                  }}
+                  $active={
+                    pathname === '/admin/moderation/genres' &&
+                    areOptionsOpen.moderation
+                  }
+                >
+                  {!isAsideMinimized && <span>Genres</span>}
+                </ModerationSubOption>
+              </SubOptions>
+            )}
           </Aside>
         )}
         <Outlet />

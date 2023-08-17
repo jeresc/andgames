@@ -8,7 +8,7 @@ export const PanelContainer = styled.section`
 `;
 
 export const Aside = styled.aside`
-  min-width: 240px;
+  width: ${props => (props.$isMinimized ? `fit-content` : `240px`)};
   height: 100vh;
   background-color: #101010;
   padding: 0.6rem;
@@ -20,7 +20,6 @@ export const MainContainer = styled.section`
 `;
 
 export const MenuHeading = styled.div`
-  padding: 1rem;
   font-family: var(--font-3);
   font-weight: 600;
   font-size: 1.3rem;
@@ -28,12 +27,28 @@ export const MenuHeading = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  span {
+    padding: 1rem;
+  }
+`;
+
+export const MinimizeArrow = styled.div`
+  padding: ${props => props.$isMinimized ? `1rem` : `.5rem`};
+ ${props => !props.$isMinimized && `margin: .5rem`};
+  border-radius: 0.8rem;
+  &:hover {
+    cursor: pointer;
+    background-color: #303030;
+  }
+
   img {
     width: 2.2rem;
     height: 2.2rem;
     cursor: pointer;
+    ${props => props.$isMinimized && `transform: rotate(180deg)`};
   }
 `;
+
 export const MenuOption = styled.div`
   display: flex;
   width: 100%;
@@ -42,6 +57,16 @@ export const MenuOption = styled.div`
   gap: 1.2rem;
   align-items: center;
   cursor: pointer;
+  ${props =>
+    props.$active
+      ? `background-color: var(--primary-color)`
+      : `&:hover {
+          background-color: #303030;
+        }
+        &:active {
+          background-color: #404040;
+        }
+  `};
 
   img {
     width: 2.2rem;
@@ -54,12 +79,33 @@ export const MenuOption = styled.div`
     font-size: 1.5rem;
     width: 100%;
   }
+`;
 
-  &:hover {
-    background-color: #303030;
-  }
+export const SubOptions = styled.div``;
+export const MenuSubOption = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 1rem 4.4rem;
+  border-radius: 0.8rem;
+  gap: 1.2rem;
+  align-items: center;
+  cursor: pointer;
+  ${props =>
+    props.$active
+      ? `background-color: var(--primary-color)`
+      : `&:hover {
+          background-color: #303030;
+        }
+        &:active {
+          background-color: #404040;
+        }
+  `};
 
-  &:active {
-    background-color: var(--primary-color);
+  span {
+    font-family: var(--font-3);
+    font-weight: 500;
+    font-size: 1.5rem;
+    width: 100%;
   }
 `;
+export const ModerationSubOption = styled(MenuSubOption)``;
