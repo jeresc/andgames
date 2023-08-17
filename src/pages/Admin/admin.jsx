@@ -26,13 +26,12 @@ export const Admin = () => {
     pathname,
     minimizeAside,
     isLoggedIn,
+    authLoading,
   } = useAdmin();
 
   return (
     <PanelContainer>
-      {!isLoggedIn && !getCookie('login_token') && (
-        <Navigate to="/login" replace={true} />
-      )}
+
       <AdminNav toggleAside={toggleAside} active={showAside} />
       <MainContainer>
         {showAside && (
@@ -111,6 +110,10 @@ export const Admin = () => {
         )}
         <Outlet />
       </MainContainer>
+      
+      {!isLoggedIn && !authLoading && (
+        <Navigate to="/login" replace={true} />
+      )}
     </PanelContainer>
   );
 };

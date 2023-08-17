@@ -4,10 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authToken } from '../redux';
+import { getCookie } from '@/helpers';
 
 export const useAdmin = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector(state => state.auth);
+  const { isLoggedIn, authLoading } = useSelector(state => state.auth);
   const [showAside, setShowAside] = useState(true);
   const [isAsideMinimized, setIsAsideMinimized] = useState(false);
   const [areOptionsOpen, setAreOptionsOpen] = useState({
@@ -27,7 +28,7 @@ export const useAdmin = () => {
     setIsAsideMinimized(!isAsideMinimized);
   };
   useEffect(() => {
-    if (!isLoggedIn) {
+    if (!isLoggedIn && getCookie('login_token')) {
       dispatch(authToken());
     }
   }, []);
@@ -48,5 +49,6 @@ export const useAdmin = () => {
     pathname,
     minimizeAside,
     isLoggedIn,
+    authLoading,
   };
 };

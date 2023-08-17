@@ -26,14 +26,14 @@ export const LogIn = () => {
   };
 
   useEffect(() => {
-    if (getCookie('login_token')) {
+    if (!isLoggedIn) {
       dispatch(authToken());
     }
-  }, []);
+  }, [isLoggedIn, dispatch]);
 
   return (
     <form onSubmit={event => event.preventDefault()}>
-      {isLoggedIn && <Navigate to="/admin" />}
+      {isLoggedIn && <Navigate to="/admin/home" />}
       <label htmlFor="email">Email</label>
       <input
         type="email"

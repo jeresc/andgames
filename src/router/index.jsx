@@ -16,7 +16,6 @@ import {
   AdminModerationGenres,
   LogIn,
 } from '@/pages';
-import { redirect } from 'react-router-dom';
 
 export const router = createHashRouter([
   {
@@ -31,6 +30,13 @@ export const router = createHashRouter([
       {
         path: 'login',
         element: <LogIn />,
+        loader: async () => {
+          fetch(`${import.meta.env.VITE_API_URL}/auth/check-session`, {
+            method: 'POST',
+            credentials: 'include',
+          });
+          return null;
+        },
       },
       {
         path: 'home',
