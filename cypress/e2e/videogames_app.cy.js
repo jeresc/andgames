@@ -3,18 +3,18 @@ import 'cypress-iframe';
 describe('Videogames App', () => {
   it('renders without crashing', () => {
     cy.visit('http://localhost:5173/');
-    cy.get('h1').contains('Landing');
-    cy.get('button').contains('Go to Home').click();
+    cy.get('h2').contains('&games');
+    cy.get('button').contains('Go Home').click();
   });
 
   it('can search for a videogame', () => {
-    cy.visit('http://localhost:5173/#/videogames');
+    cy.visit('http://localhost:5173/#/home');
     cy.get("input[name='search-bar']").type('The Witcher');
     cy.get('h3').contains('The Witcher');
   });
 
   it('can add a new videogame', () => {
-    cy.visit('http://localhost:5173/#/videogames/');
+    cy.visit('http://localhost:5173/#/home/');
     cy.contains('New').click();
     cy.get("[data-set-id='add-videogame-form'] button[type='submit']").should(
       'be.disabled',
@@ -30,17 +30,17 @@ describe('Videogames App', () => {
     cy.get("[data-set-id='add-videogame-form'] button[type='submit']").should(
       'be.disabled',
     );
-    cy.get("[data-set-id='add-videogame-form'] button[field='genres']").click();
+    cy.get("[data-set-id='add-videogame-form'] button[data-field='genres']").click();
     cy.contains('Arcade').click();
     cy.contains('Show options').click();
-    cy.contains('Action').click();
+    cy.contains('Racing').click();
     cy.contains('Save').click();
     cy.get("[data-set-id='add-videogame-form'] button[type='submit']").should(
       'be.disabled',
     );
 
     cy.get(
-      "[data-set-id='add-videogame-form'] button[field='platforms']",
+      "[data-set-id='add-videogame-form'] button[data-field='platforms']",
     ).click();
     cy.contains('PlayStation').click();
     cy.contains('Show options').click();
