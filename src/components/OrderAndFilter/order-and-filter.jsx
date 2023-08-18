@@ -38,7 +38,7 @@ export const OrderAndFilter = () => {
     toggleOrder,
     toggleFilter,
     genres,
-    toggleOriginFilter,
+    toggleDebouncedGenresFilter,
     order,
     filter,
     setOrderIcon,
@@ -89,7 +89,7 @@ export const OrderAndFilter = () => {
                 <Checkbox
                   key={genre.id}
                   element={genre}
-                  toggleElement={toggleOriginFilter}
+                  toggleElement={toggleDebouncedGenresFilter}
                 />
               )) : <LoadingGenres>Loading genres</LoadingGenres>}
             </GenresContainer>

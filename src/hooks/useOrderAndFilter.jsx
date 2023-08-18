@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addGenreFilter, filterVideogames, orderVideogames, removeGenreFilter } from '@/redux'
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterVideogames, orderVideogames, setGenresFilter } from '@/redux';
 import {
   arrowDownLetters,
   arrowDownNumbers,
@@ -9,52 +9,60 @@ import {
 } from '@/assets';
 
 export const useOrderAndFilter = () => {
-  const { genres, genres_filter, order, filter } = useSelector((store) => store.videogames)
+  const { genres, order, filter } = useSelector(store => store.videogames);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [filterIsOpen, setFilterIsOpen] = useState(false)
-  const [orderIsOpen, setOrderIsOpen] = useState(false)
+  const [filterIsOpen, setFilterIsOpen] = useState(false);
+  const [orderIsOpen, setOrderIsOpen] = useState(false);
+  const [debouncedGenresFilter, setDeboundedGenresFilter] = useState([]);
 
-  const handleOrder = (order) => {
-    dispatch(orderVideogames(order))
-    toggleOrder()
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(setGenresFilter(debouncedGenresFilter));
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [debouncedGenresFilter, dispatch]);
 
-  const handleFilter = (filter) => {
-    dispatch(filterVideogames(filter))
-    toggleFilter()
-  }
+  const handleOrder = order => {
+    dispatch(orderVideogames(order));
+    toggleOrder();
+  };
+
+  const handleFilter = filter => {
+    dispatch(filterVideogames(filter));
+    toggleFilter();
+  };
 
   const toggleFilter = () => {
-    setFilterIsOpen(!filterIsOpen)
-    setOrderIsOpen(false)
-  }
+    setFilterIsOpen(!filterIsOpen);
+    setOrderIsOpen(false);
+  };
 
   const toggleOrder = () => {
-    setOrderIsOpen(!orderIsOpen)
-    setFilterIsOpen(false)
-  }
+    setOrderIsOpen(!orderIsOpen);
+    setFilterIsOpen(false);
+  };
 
-  const toggleOriginFilter = (genre) => {
-    if (genres_filter.includes(genre)) dispatch(removeGenreFilter(genre))
-    else dispatch(addGenreFilter(genre))
-  }
-
-  const setOrderIcon = (order) => {
+  const toggleDebouncedGenresFilter = genre => {
+    debouncedGenresFilter.includes(genre)
+      ? setDeboundedGenresFilter(debouncedGenresFilter.filter(g => g !== genre))
+      : setDeboundedGenresFilter([...debouncedGenresFilter, genre]);
+  };
+  const setOrderIcon = order => {
     switch (order) {
       case 'name_asc':
-        return arrowDownLetters
+        return arrowDownLetters;
       case 'name_desc':
-        return arrowUpLetters
+        return arrowUpLetters;
       case 'rating_asc':
-        return arrowDownNumbers
+        return arrowDownNumbers;
       case 'rating_desc':
-        return arrowUpNumbers
+        return arrowUpNumbers;
       default:
-        return
+        return null;
     }
-  }
+  };
 
   return {
     handleOrder,
@@ -64,9 +72,9 @@ export const useOrderAndFilter = () => {
     toggleFilter,
     toggleOrder,
     genres,
-    toggleOriginFilter,
+    toggleDebouncedGenresFilter,
     order,
     filter,
-    setOrderIcon
-  }
-}
+    setOrderIcon,
+  };
+};

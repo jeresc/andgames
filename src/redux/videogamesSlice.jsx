@@ -36,6 +36,9 @@ const videogamesSlice = createSlice({
     filterVideogames: (state, action) => {
       state.filter = action.payload
     },
+    setGenresFilter: (state, action) => {
+      state.genres_filter = action.payload
+    },
     addGenreFilter: (state, action) => {
       state.genres_filter = [...state.genres_filter, action.payload]
     },
@@ -77,6 +80,7 @@ export const {
   filterVideogames,
   addGenreFilter,
   removeGenreFilter,
-  resetVideogame
+  resetVideogame,
+  setGenresFilter
 } = videogamesSlice.actions
 export default videogamesSlice.reducer

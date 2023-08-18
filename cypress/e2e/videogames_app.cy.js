@@ -33,7 +33,7 @@ describe('Videogames App', () => {
     cy.get("[data-set-id='add-videogame-form'] button[data-field='genres']").click();
     cy.contains('Arcade').click();
     cy.contains('Show options').click();
-    cy.contains('Racing').click();
+    cy.contains('RPG').click();
     cy.contains('Save').click();
     cy.get("[data-set-id='add-videogame-form'] button[type='submit']").should(
       'be.disabled',
