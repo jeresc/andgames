@@ -1,4 +1,4 @@
-# 🎮 Video Games App 🕹️
+# 🎮 &games 🕹️
 
 ## Description 📝
 
