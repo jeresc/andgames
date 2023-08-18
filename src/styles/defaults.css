@@ -2,6 +2,7 @@
   background-size: cover;
   background-position: center;
   font-size: 62.5%;
+  /* font-size: clamp(10px, .666vw, 20px); */
   font-family: var(--font);
   color: var(--mill-white);
   font-weight: 400;

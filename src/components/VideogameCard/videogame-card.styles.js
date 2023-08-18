@@ -5,7 +5,7 @@ export const Card = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #202020;
+  background-color: #121212;
   border-radius: 1.2rem;
 `;
 
@@ -13,6 +13,7 @@ export const Title = styled.h3`
   font-size: 2.4rem;
   font-weight: 800;
   color: #fff;
+  cursor: pointer;
 `;
 
 export const Rating = styled.p`
@@ -49,6 +50,7 @@ export const LogoContainer = styled.div`
 export const CardImage = styled.div`
   width: 100%;
   height: 200px;
+  cursor: pointer;
 
   img {
     width: 100%;

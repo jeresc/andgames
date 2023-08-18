@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchVideogameById, resetVideogame } from "../../redux"
+import { DetailContainer } from "./videogame-detail-card.styles"
 
 export const VideogameDetailCard = () => {
 
@@ -16,7 +17,7 @@ export const VideogameDetailCard = () => {
   }, [videogameId, dispatch])
 
   return (
-    <div>
+    <DetailContainer>
       {loading ? <div>Loading</div> : <div key={videogame?.id}>
         <h1>{videogame?.name}</h1>
         <img src={videogame?.image} alt={videogame?.name} />
@@ -25,6 +26,6 @@ export const VideogameDetailCard = () => {
         <p>{videogame?.rating}</p>
         <p>{videogame?.platforms}</p>
       </div>}
-    </div>
+    </DetailContainer>
   )
 }

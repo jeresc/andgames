@@ -4,10 +4,35 @@ export const VideogamesContainer = styled.section`
   width: 100%;
   height: 100%;
 
+  h2 {
+    font-size: 6rem;
+    font-weight: 800;
+    padding: 2rem 2rem 0 2rem;
+  }
+
   @media screen and (min-width: 1024px) {
     margin-left: 300px;
   }
+
+  @media screen and (max-width: 768px) {
+    h2 {
+      font-size: 4rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    h2 {
+      font-size: 3rem;
+    }
+  }
 `;
+
+export const TitleSubheading = styled.p`
+
+    font-size: 2rem;
+    padding: 0rem 2rem 1rem 2rem;
+    color: #ccc;
+`
 
 export const CardContainer = styled.section`
   height: 100%;

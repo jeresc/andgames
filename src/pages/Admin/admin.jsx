@@ -13,7 +13,6 @@ import { Outlet } from 'react-router-dom';
 import { AdminNav } from '@/components';
 import { useAdmin } from '@/hooks';
 import { Navigate } from 'react-router-dom';
-import { getCookie } from '@/helpers';
 
 export const Admin = () => {
   const {
@@ -26,7 +25,6 @@ export const Admin = () => {
     pathname,
     minimizeAside,
     isLoggedIn,
-    authLoading,
   } = useAdmin();
 
   return (
@@ -111,7 +109,7 @@ export const Admin = () => {
         <Outlet />
       </MainContainer>
       
-      {!isLoggedIn && !authLoading && (
+      {!isLoggedIn && (
         <Navigate to="/login" replace={true} />
       )}
     </PanelContainer>

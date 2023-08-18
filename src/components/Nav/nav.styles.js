@@ -7,6 +7,8 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  background-color: #171717;
+  border-bottom: 1px solid #282828;
 `
 
 export const NavLogo = styled.img`

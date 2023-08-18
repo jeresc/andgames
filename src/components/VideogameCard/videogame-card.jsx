@@ -92,7 +92,7 @@ const navigate = useNavigate()
             {videogame.rating.toFixed(2)}
           </Rating>
         </CardSubheading>
-        <Title>{videogame.name}</Title>
+        <Title onClick={() => navigate(`/home/${videogame.id}`)}>{videogame.name}</Title>
         <Description>{videogame.description}</Description>
         <p>{formatReleaseDate(videogame.release_date)}</p>
         <p>

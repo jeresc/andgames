@@ -2,6 +2,8 @@ import { styled } from 'styled-components';
 
 export const FormContainer = styled.section`
   color: #fff;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Form = styled.form`
@@ -10,18 +12,20 @@ export const Form = styled.form`
   gap: 2rem;
   max-width: 800px;
   margin: 10px auto 20px auto;
-  background-color: #232323;
   padding: 2.6rem;
   border-radius: 1.2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 `;
 
 export const FormTitle = styled.h1`
-  font-size: 2.4rem;
-`
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: var(--font-3);
+`;
 
 export const FormInput = styled.input`
   padding: 1.2rem 1.3rem;
-  background-color: #242424;
+  background-color: #222;
   outline: none;
   border: none;
   font-size: 1.8rem;
@@ -37,7 +41,7 @@ export const FormLabel = styled.label`
 export const FormSelect = styled.select``;
 export const FormOption = styled.option``;
 export const FormTextArea = styled.textarea`
-  background-color: #171717;
+  background-color: #222;
   border-radius: 12px;
   outline: none;
   border: none;
@@ -51,14 +55,18 @@ export const FormTextArea = styled.textarea`
 `;
 
 export const AddButton = styled.button`
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 1.2rem;
-  width: 140px;
-  background-color: #171717;
+  font-size: 1.7rem;
+  font-weight: 500; 
+  padding: 1.6rem;
+  width: auto;
+  background-color: #111;
   border: none;
   color: #fff;
-  border-radius: 1.6rem;
+  border-radius: 1.2rem;
+
+  &:hover{
+    background-color: #222;
+  }
 `;
 
 export const OptionsContainer = styled.div`
@@ -69,22 +77,49 @@ export const OptionsContainer = styled.div`
 
 export const Option = styled.div`
   width: auto;
-  padding: 1rem;
+  padding: 1.4rem;
   border-radius: 1.6rem;
-  font-size: 1.5rem;
-  background-color: #121212;
+  font-size: 2rem;
+  background-color: #222;
   color: #fff;
-  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #333;
+  }
+
+  img {
+    width: 1.6rem;
+  }
 `;
 
-export const SubmitButton = styled.button``;
+export const SubmitButton = styled.button`
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem;
+  width: 100%;
+  border-radius: .8rem;
+  border:none;
+  background-color: #fff;
+  color: #000;
+
+  &:disabled {
+    background-color: #aaa;
+  color: #666;
+  }
+`;
 
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding-top: 2rem;
-  border-top: 1px solid #ffffff10;
+  /* border-top: 1px solid #ffffff10; */
   position: relative;
 `;
 
@@ -95,7 +130,24 @@ export const FormError = styled.p`
   right: 0;
   text-align: right;
   vertical-align: middle;
-  padding: .5rem;
+  padding: 0.5rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `;
 
-export const CancelButton = styled.button``
+export const CancelButton = styled.button`
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 2rem;
+  width: 100%;
+  background-color: #222;
+  border: none;
+  color: #fff;
+  border-radius: .8rem;
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+`;

@@ -14,6 +14,7 @@ import {
   OptionIcon,
   OrderOption,
   OriginOptions,
+  LoadingGenres
 } from './order-and-filter.styles';
 import { chevronDown } from '@/assets';
 import { useOrderAndFilter } from '@/hooks';
@@ -84,13 +85,13 @@ export const OrderAndFilter = () => {
               <HeadingTitle>Genres</HeadingTitle>
             </FilterHeading>
             <GenresContainer>
-              {genres.map(genre => (
+              {genres.length ? genres.map(genre => (
                 <Checkbox
                   key={genre.id}
                   element={genre}
                   toggleElement={toggleOriginFilter}
                 />
-              ))}
+              )) : <LoadingGenres>Loading genres</LoadingGenres>}
             </GenresContainer>
             <HeadingTitle>Origin</HeadingTitle>
             <OriginOptions>

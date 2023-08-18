@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import { WidgetButton, UploadedImage } from './upload-widget.styles';
+import { WidgetButton, UploadedImage, ImageContainer } from './upload-widget.styles';
 import { setForm } from '@/redux';
 import { useDispatch } from 'react-redux';
 
@@ -80,9 +80,14 @@ export const UploadWidget = () => {
   };
 
   return (
-    <div>
-      <WidgetButton onClick={openWidget} id="upload-button">Upload Button</WidgetButton>
-      {uploadedImage && <UploadedImage src={uploadedImage} />}
-    </div>
+    <ImageContainer>
+      {uploadedImage ? (
+        <UploadedImage src={uploadedImage} />
+      ) : (
+        <WidgetButton onClick={openWidget} id="upload-button">
+          Upload Button
+        </WidgetButton>
+      )}
+    </ImageContainer>
   );
 };

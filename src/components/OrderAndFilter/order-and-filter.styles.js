@@ -1,24 +1,46 @@
-import { styled } from 'styled-components';
+import { keyframes, styled } from 'styled-components';
+
+const dots = keyframes`
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;
+`;
 
 export const StyledOrderAndFilter = styled.div`
   width: 100%;
   display: flex;
   gap: 1.6rem;
+  padding: 1rem 0 0 0;
   place-items: center;
   place-content: center;
   position: relative;
 
   @media screen and (min-width: 1024px) {
+    gap: 5rem;
     width: 300px;
-    height: 100vh;
-    top: 100px;
-    background-color: #121212;
+    min-height: calc(100vh - 88px);
 
     height: fit-content;
     flex-direction: column;
     position: fixed;
-    place-content: flex-start;
     place-items: flex-start;
+    justify-content: center;
+    background-color: #121212;
   }
 `;
 
@@ -38,11 +60,11 @@ export const DropdownButton = styled.button`
   background-color: #202020;
   border-radius: 1.2rem;
   padding: 10px;
-  font-family: "Nunito";
+  font-family: 'Nunito';
 
   @media screen and (min-width: 1024px) {
     background-color: 0000;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     padding: 10px;
     width: auto;
     background-color: #0000;
@@ -90,7 +112,7 @@ export const Dropdown = styled.div`
   gap: 1.6rem;
   flex-direction: column;
   position: absolute;
-  top: 50px;
+  top: 60px;
   background-color: #202020;
   border-radius: 1.2rem;
   z-index: 50;
@@ -135,13 +157,17 @@ export const Dropdown = styled.div`
 `;
 
 export const FilterDropdown = styled(Dropdown)`
-  width: 430px;
+  width: 434px;
   right: calc(50%-200px);
-  padding: 2.2rem;
+  padding: 2rem;
 
   @media screen and (min-width: 1024px) {
     width: 300px;
-    padding: 0 2.2rem;
+    padding: 1rem 2rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 300px;
   }
 `;
 export const OrderDropdown = styled(Dropdown)`
@@ -149,7 +175,7 @@ export const OrderDropdown = styled(Dropdown)`
   padding: 1.4rem;
 
   @media screen and (min-width: 1024px) {
-    padding: 0 2.2rem;
+    padding: 1rem 2rem;
   }
 `;
 
@@ -163,6 +189,13 @@ export const OrderButton = styled.button`
   justify-content: start;
   align-items: center;
   gap: 0.7rem;
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      cursor: pointer;
+      background-color: #202020;
+    }
+  }
 `;
 
 export const FilterContainer = styled.div`
@@ -200,19 +233,35 @@ export const FilterButton = styled.button`
   }
 `;
 
+export const LoadingGenres = styled.span`
+  color: #aaa;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-family: var(--font-2);
+
+  &:after {
+    content: ' .';
+    animation: ${dots} 1s steps(5, end) infinite;
+  }
+`;
+
 export const GenresContainer = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0 1rem;
   justify-content: start;
   align-items: center;
-  height: auto;
-  grid-gap: 1rem 0.4rem;
 
   @media screen and (min-width: 1024px) {
-    height: 170px;
+    height: 120px;
     width: 280px;
-    scrollbar-gutter: stable;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -220,7 +269,7 @@ export const GenresContainer = styled.div`
     }
 
     &::-webkit-scrollbar-track {
-      background: #000c;
+      background: #0003;
       border-radius: 20px;
     }
 
@@ -239,10 +288,12 @@ export const OptionIcon = styled.img`
 export const FilterHeading = styled.div``;
 export const HeadingTitle = styled.h3`
   color: #fff;
+  font-family: 'Nunito';
   font-size: 2.3rem;
 
   @media screen and (min-width: 1024px) {
-    font-size: 2rem;
+    color: #ccc;
+    font-size: 1.9rem;
   }
 `;
 

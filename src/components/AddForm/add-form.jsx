@@ -6,10 +6,11 @@ import {
   OptionsContainer,
   Option,
   ShowButton,
+  Button,
+  ButtonContainer,
   SelectOption,
   SelectOptionsContainer,
 } from './add-form.styles';
-import { Button } from '@/components';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addInputField,
@@ -17,6 +18,7 @@ import {
   updateInitialFields,
   removeInputField,
 } from '@/redux';
+import { xmark } from '../../assets';
 
 export const AddForm = ({ field, setShowAddForm }) => {
   const [showOptions, setShowOptions] = useState(true);
@@ -29,14 +31,15 @@ export const AddForm = ({ field, setShowAddForm }) => {
       <Form>
         <FormTitle>{field.replace(/^./, field[0].toUpperCase())}</FormTitle>
         <ShowButton
+          $active={showOptions}
           onClick={() => {
             setShowOptions(!showOptions);
           }}
         >
           Show options
         </ShowButton>
-        {showOptions && (
-          <SelectOptionsContainer>
+        {
+          <SelectOptionsContainer $active={showOptions}>
             {inputOptions &&
               inputOptions
                 .filter(option => option.selected === false)
@@ -54,7 +57,7 @@ export const AddForm = ({ field, setShowAddForm }) => {
                   </SelectOption>
                 ))}
           </SelectOptionsContainer>
-        )}
+        }
         <OptionsContainer>
           {inputOptions
             .filter(option => option.selected === true)
@@ -66,25 +69,27 @@ export const AddForm = ({ field, setShowAddForm }) => {
                 }}
               >
                 {option.name}
+                <img src={xmark} alt="broken heart" />
               </Option>
             ))}
         </OptionsContainer>
-
-        <Button
-          action={() => {
-            setShowAddForm(false);
-            dispatch(updateInitialFields({ field }));
-          }}
-        >
-          Save
-        </Button>
-        <Button
-          action={() => {
-            setShowAddForm(false);
-          }}
-        >
-          Cancel
-        </Button>
+        <ButtonContainer>
+          <Button
+            onClick={() => {
+              setShowAddForm(false);
+              dispatch(updateInitialFields({ field }));
+            }}
+          >
+            Save
+          </Button>
+          <Button
+            onClick={() => {
+              setShowAddForm(false);
+            }}
+          >
+            Cancel
+          </Button>
+        </ButtonContainer>
       </Form>
     </FormContainer>
   );

@@ -16,6 +16,7 @@ import {
   Option,
   SubmitButton,
   CancelButton,
+  ButtonsContainer
 } from './videogame-form.styles';
 import { AddForm, StarRating, UploadWidget } from '@/components';
 import {
@@ -27,6 +28,7 @@ import {
 import { validateForm } from '@/helpers';
 import { useNavigate } from 'react-router-dom';
 import { setForm } from '@/redux';
+import { xmark } from '../../assets';
 
 export const VideogameForm = () => {
   const [showAddPlatformForm, setShowAddPlatformForm] = useState(false);
@@ -63,7 +65,7 @@ export const VideogameForm = () => {
         type: 'success',
       }),
     );
-    navigate('/videogames');
+    navigate('/home');
   };
 
   const handleChange = event => {
@@ -111,9 +113,9 @@ export const VideogameForm = () => {
     videogame.genres,
   ]);
 
-  useEffect(() => {
-    console.log(videogame)
-  }, [videogame])
+  // useEffect(() => {
+  //   console.log(videogame);
+  // }, [videogame]);
 
   return (
     <FormContainer>
@@ -140,10 +142,10 @@ export const VideogameForm = () => {
           <FormError>{errors.genres}</FormError>
           <OptionsContainer>
             <AddButton
-              field="genres"
+              data-field="genres"
               onClick={() => setShowAddGenreForm(!showAddGenreForm)}
             >
-              Add options
+              Add genres 
             </AddButton>
             {showAddGenreForm && (
               <AddForm
@@ -164,6 +166,7 @@ export const VideogameForm = () => {
                   }}
                 >
                   {option.name}
+                  <img src={xmark} alt="Delete added option icon" />
                 </Option>
               ))}
           </OptionsContainer>
@@ -175,9 +178,9 @@ export const VideogameForm = () => {
           <OptionsContainer>
             <AddButton
               onClick={() => setShowAddPlatformForm(!showAddPlatformForm)}
-              field="platforms"
+              data-field="platforms"
             >
-              Add options
+              Add platforms
             </AddButton>
             {showAddPlatformForm && (
               <AddForm
@@ -198,6 +201,7 @@ export const VideogameForm = () => {
                   }}
                 >
                   {option.name}
+                  <img src={xmark} alt="Delete added option icon" />
                 </Option>
               ))}
           </OptionsContainer>
@@ -241,40 +245,48 @@ export const VideogameForm = () => {
             )
           }
           id="test-image-button"
-          style={{ visibility: 'visible', position: 'absolute', width: 1, height: 1, left: 999 }}
-        ></button>
-        <SubmitButton
-          type="submit"
-          onClick={handleSubmit}
-          disabled={
-            errors.name ||
-            errors.rating ||
-            errors.platforms ||
-            errors.genres ||
-            errors.description ||
-            errors.released
-          }
-        >
-          Submit
-        </SubmitButton>
-        <CancelButton
-          onClick={() => {
-            setVideogame({
-              name: '',
-              image: '',
-              description: '',
-              released: '',
-              rating: '',
-              platforms: [],
-              genres: [],
-            });
-            dispatch(resetInputField({ field: 'genres' }));
-            dispatch(resetInputField({ field: 'platforms' }));
-            navigate('/videogames');
+          style={{
+            visibility: 'visible',
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            left: 999,
           }}
-        >
-          Cancel
-        </CancelButton>
+        ></button>
+        <ButtonsContainer>
+          <SubmitButton
+            type="submit"
+            onClick={handleSubmit}
+            disabled={
+              errors.name ||
+              errors.rating ||
+              errors.platforms ||
+              errors.genres ||
+              errors.description ||
+              errors.released
+            }
+          >
+            Submit
+          </SubmitButton>
+          <CancelButton
+            onClick={() => {
+              setVideogame({
+                name: '',
+                image: '',
+                description: '',
+                released: '',
+                rating: '',
+                platforms: [],
+                genres: [],
+              });
+              dispatch(resetInputField({ field: 'genres' }));
+              dispatch(resetInputField({ field: 'platforms' }));
+              navigate('/home');
+            }}
+          >
+            Cancel
+          </CancelButton>
+        </ButtonsContainer>
       </Form>
     </FormContainer>
   );

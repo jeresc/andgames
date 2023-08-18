@@ -1,8 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Videogame, LoadingCard } from '@/components';
-import { CardContainer, NoResultsFound, VideogamesContainer } from './videogames-cards.styles';
+import {
+  CardContainer,
+  NoResultsFound,
+  VideogamesContainer,
+  TitleSubheading,
+} from './videogames-cards.styles';
 import { useEffect } from 'react';
-import { fetchGenres, addNotification, setForm } from '@/redux';
+import { fetchGenres} from '@/redux';
 import { brokenHeart } from '@/assets';
 
 export const Videogames = () => {
@@ -16,8 +21,9 @@ export const Videogames = () => {
 
   return (
     <VideogamesContainer>
-      <h2 style={{ fontWeight: "800", fontSize: "6rem"}}>New and exciting</h2>
-      <p>Based on players rating</p>
+      <h2 >New and exciting</h2>
+      <TitleSubheading>Based on players interest</TitleSubheading>
+      {/*
       <button
         onClick={() => {
           dispatch(
@@ -31,6 +37,8 @@ export const Videogames = () => {
       >
         Add notification
       </button>
+
+      */}{' '}
       <CardContainer>
         {loading ? (
           Array.apply(null, { length: 15 }).map((_, index) => (
