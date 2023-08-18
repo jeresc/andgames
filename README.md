@@ -4,9 +4,9 @@
 
 This is a Single Page Application (SPA) frontend created with React, Redux Toolkit, and Styled Components. The application fetches video game data from the rawg.io API and also features its own database to save new games. Additionally, it includes testing using a test suite and image storage is handled through Cloudinary.
 
-## Demo 🚀
+## Deploy 🚀
 
-Check out the live demo of the application at [https://videogames-app-blond.vercel.app/](https://videogames-app-blond.vercel.app/)
+Check out the live deploy of the application at [&games](videogames-app-jeresc.vercel.app/)
 
 ## Features 🌟
 
@@ -40,5 +40,3 @@ If you have any questions or need further information, you can contact the proje
 
 ---
 Thank you for visiting the Video Games App repository! If you have any questions or feedback, please don't hesitate to get in touch. Enjoy exploring the app! 🎉
-
-Made with ❤️ by [jeresc](https://github.com/jeresc)
