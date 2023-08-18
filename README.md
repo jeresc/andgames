@@ -6,7 +6,7 @@ This is a Single Page Application (SPA) frontend created with React, Redux Toolk
 
 ## Deploy 🚀
 
-Check out the live deploy of the application at [&games](videogames-app-jeresc.vercel.app/)
+Check out the live deploy of the application at [&games](https://videogames-app-jeresc.vercel.app/)
 
 ## Features 🌟
 
