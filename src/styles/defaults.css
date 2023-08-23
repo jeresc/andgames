@@ -6,7 +6,6 @@
   font-family: var(--font);
   color: var(--mill-white);
   font-weight: 400;
-  scrollbar-gutter: stable;
   background-color: var(--bg-1);
 }
 

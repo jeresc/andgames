@@ -2,17 +2,25 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { fetchVideogames } from '@/redux';
 import { useDispatch, useSelector } from 'react-redux';
+import { setPage } from '../redux/paginationSlice';
 
 export const useSearchBar = () => {
   const { page, initialPage } = useSelector(store => store.pagination);
 
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const [genresFilterWatcher, setGenresFilterWatcher] = useState();
 
   const dispatch = useDispatch();
-  const { videogames, videogamesCount, order, filter, genres_filter, loading, fetchedRequests } = useSelector(
-    store => store.videogames,
-  );
+  const {
+    videogames,
+    videogamesCount,
+    order,
+    filter,
+    genres_filter,
+    loading,
+    fetchedRequests,
+  } = useSelector(store => store.videogames);
 
   const onSearchSubmit = search => {
     dispatch(
@@ -45,6 +53,15 @@ export const useSearchBar = () => {
       clearResults();
     }
   }, [search, filter, order, page, genres_filter]);
+
+  useEffect(() => {
+    if (!loading) {
+      if (genres_filter.length !== genresFilterWatcher) {
+        dispatch(setPage(initialPage));
+        setGenresFilterWatcher(genres_filter.length);
+      }
+    }
+  }, [loading]);
 
   return {
     debouncedSearch,

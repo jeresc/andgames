@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { Nav } from '@/components';
+import { Nav, FloatingNotification } from '@/components';
 import { MainContainer, NotificationsContainer } from './main.styles';
-import { FloatingNotification } from '../../components/FloatingNotification/floating-notification';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -10,18 +9,19 @@ export const Main = () => {
   const { pathname } = useLocation();
 
   const blacklistedPaths = ['/'];
-  const shouldShowNav = !blacklistedPaths.includes(pathname) && !/admin/.test(pathname)
+  const shouldShowNav =
+    !blacklistedPaths.includes(pathname) && !/admin/.test(pathname);
 
   useEffect(() => {
-    console.log(notifications)
-  },[notifications])
+    console.log(notifications);
+  }, [notifications]);
 
   return (
     <MainContainer>
       {shouldShowNav && <Nav />}
       {notifications.length ? (
         <NotificationsContainer>
-          {notifications.map((notification) => (
+          {notifications.map(notification => (
             <FloatingNotification
               key={notification.id}
               id={notification.id}
@@ -30,7 +30,9 @@ export const Main = () => {
             />
           ))}
         </NotificationsContainer>
-      ) : <></>}
+      ) : (
+        <></>
+      )}
       <Outlet />
     </MainContainer>
   );

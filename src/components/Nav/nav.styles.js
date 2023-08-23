@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const NavContainer = styled.nav`
   width: 100%;
@@ -9,14 +9,14 @@ export const NavContainer = styled.nav`
   padding: 1rem;
   background-color: #171717;
   border-bottom: 1px solid #282828;
-`
+`;
 
 export const NavLogo = styled.img`
   height: 6.8rem;
   object-fit: cover;
   width: auto;
   cursor: pointer;
-`
+`;
 
 export const NavButton = styled.button`
   width: 6rem;
@@ -28,4 +28,4 @@ export const NavButton = styled.button`
   border-radius: 16px;
   background-color: #282828;
   color: #fff;
-`
+`;

@@ -33,9 +33,8 @@ export const StyledOrderAndFilter = styled.div`
   @media screen and (min-width: 1024px) {
     gap: 5rem;
     width: 300px;
+    top: 88px;
     min-height: calc(100vh - 88px);
-
-    height: fit-content;
     flex-direction: column;
     position: fixed;
     place-items: flex-start;
@@ -124,15 +123,10 @@ export const Dropdown = styled.div`
   `
       : ``}
   transition: visibility 0s linear .2s,opacity .2s ease-in-out,-webkit-transform .2s ease-in-out;
-  transition:
-    visibility 0s linear 0.2s,
-    opacity 0.2s ease-in-out,
+  transition: visibility 0s linear 0.2s, opacity 0.2s ease-in-out,
     transform 0.2s ease-in-out;
-  transition:
-    visibility 0s linear 0s,
-    opacity 0.2s ease-in-out,
-    transform 0.2s ease-in-out,
-    -webkit-transform 0.2s ease-in-out;
+  transition: visibility 0s linear 0s, opacity 0.2s ease-in-out,
+    transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
   visibility: ${({ $active }) => ($active ? 'visible' : 'hidden')};
   opacity: ${({ $active }) => ($active ? 1 : 0)};
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);

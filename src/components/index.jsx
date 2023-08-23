@@ -12,3 +12,4 @@ export * from './TabBar/tab-bar';
 export * from './Icons/icons';
 export * from './UploadWidget/upload-widget';
 export * from './AdminNav/admin-nav';
+export * from './FloatingNotification/floating-notification';

@@ -28,16 +28,15 @@ export const VideogamesContainer = styled.section`
 `;
 
 export const TitleSubheading = styled.p`
-
-    font-size: 2rem;
-    padding: 0rem 2rem 1rem 2rem;
-    color: #ccc;
-`
+  font-size: 2rem;
+  padding: 0rem 2rem 1rem 2rem;
+  color: #ccc;
+`;
 
 export const CardContainer = styled.section`
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 1.2rem;
   margin: 1rem 2rem;
 `;
@@ -46,12 +45,13 @@ export const NoResultsFound = styled.section`
   margin-top: 7rem;
   text-align: center;
   height: 100%;
-  width: 100%;
+  width: 100vw;
+  margin: 8rem 0 0 -2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: .6rem;
+  gap: 0.6rem;
 
   img {
     width: 110px;
@@ -66,5 +66,9 @@ export const NoResultsFound = styled.section`
   p {
     font-size: 1.8rem;
     color: #ccc;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc(100vw - 300px);
   }
 `;

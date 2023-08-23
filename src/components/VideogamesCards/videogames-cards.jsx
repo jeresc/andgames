@@ -7,7 +7,7 @@ import {
   TitleSubheading,
 } from './videogames-cards.styles';
 import { useEffect } from 'react';
-import { fetchGenres} from '@/redux';
+import { fetchGenres, addNotification } from '@/redux';
 import { brokenHeart } from '@/assets';
 
 export const Videogames = () => {
@@ -21,23 +21,22 @@ export const Videogames = () => {
 
   return (
     <VideogamesContainer>
-      <h2 >New and exciting</h2>
+      <h2>New and exciting</h2>
       <TitleSubheading>Based on players interest</TitleSubheading>
       {/*
-      <button
-        onClick={() => {
-          dispatch(
-            addNotification({
-              message: 'Your game has been successfully added',
-              type: 'success',
-              id: Math.random(),
-            }),
-          );
-        }}
-      >
-        Add notification
-      </button>
-
+        <button
+          onClick={() => {
+            dispatch(
+              addNotification({
+                message: 'Your game has been successfully added',
+                type: 'error',
+                id: Math.random(),
+              }),
+            );
+          }}
+        >
+          Add notification
+        </button>
       */}{' '}
       <CardContainer>
         {loading ? (
