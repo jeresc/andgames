@@ -2,6 +2,8 @@ import { styled } from 'styled-components';
 
 export const TabBarContainer = styled.div`
   display: flex;
+  width: fit-content;
+  margin-inline: auto;
   position: fixed;
   bottom: 5px;
   left: 0;
